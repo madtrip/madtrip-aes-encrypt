@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<script src="bower_components/crypto/rollups/aes.js"></script>
+		<script src="bower_components/crypto/rollups/md5.js"></script>
+		<script src="bower_components/crypto/rollups/pbkdf2.js"></script>
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+
+		<script>
+			function encrypt() {
+				console.log(CryptoJS.AES.encrypt($('#encrypt_text').val(), $('#encrypt_key').val()).toString());
+				$('#output').html(CryptoJS.AES.encrypt($('#encrypt_text').val(), $('#encrypt_key').val()).toString());
+			}
+
+			function decrypt() {
+				console.log(CryptoJS.AES.encrypt($('#decrypt_text').val(), $('#decrypt_key').val()).toString());
+				$('#output')
+					.html(CryptoJS.AES.decrypt($('#decrypt_text').val(), $('#decrypt_key').val())
+					.toString(CryptoJS.enc.Utf8));
+			}
+		</script>
+
+	</head>
+	<body>
+		<h1>MadTrip Data Encryptor</h1>
+		<h2>Encrypt</h2>
+		<input id="encrypt_key" type="text" placeholder="key"/><br/><br/>
+		<textarea id="encrypt_text" placeholder="content"></textarea><br/><br/>
+		<button onclick="encrypt()">Encrypt</button>
+		<h2>Decrypt</h2>
+		<input type="text" id="decrypt_key" placeholder="key"/><br/><br/>
+		<textarea id="decrypt_text" placeholder="content"></textarea><br/><br/>
+		<button onclick="decrypt()">Decrypt</button>
+
+		<h3>Output</h3>
+		<div id="output" style="padding: 6px"></div>
+	</body>
+</html>
